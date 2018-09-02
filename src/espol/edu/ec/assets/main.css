@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 31, 2018, 9:14:29 PM
+    Author     : MiguelPS
+*/
+
+*{
+    -fx-primary : #2A2E37;
+    -fx-secondary : #ffffff;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-green:#2E7D32;
+}
+
+#anchor{
+    -fx-background-color: -fx-primary;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}
+
+#button_close{
+    -fx-border-color: -fx-primary;
+    -fx-background-color: -fx-primary;
+    -fx-graphic: url("close_n.png");
+}
+#button_close:hover{
+    -fx-graphic: url("close_h.png"); 
+}
+
+#button_start{
+    -fx-border-color: -fx-primary;
+    -fx-background-color: -fx-primary;
+    -fx-graphic: url("icon_start.png");
+}
+#button_start:hover{
+    -fx-graphic: url("icon_start_h.png"); 
+}
+
+#button_start:focused{
+    -fx-graphic: url("icon_start.png");
+}
+
+
+.label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.radio-button{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 10pt;
+}
+
+.button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+.button:focused{
+    -fx-border-color: -fx-primary;
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-primarytext;
+}
+
