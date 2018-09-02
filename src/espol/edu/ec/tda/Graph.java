@@ -10,10 +10,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-/**
- *
- * @author MiguelPS
- */
 public class Graph<E> {
 
     private List<Vertex<E>> vertices;
@@ -32,20 +28,20 @@ public class Graph<E> {
         origen.setDistancia(0);
         Vertex<E> v = origen;
 
-        while (!v.equals(destino)) {
-
-            for (Edge<E> edge : v.getEdges()) {
-
-                if (v.getDistancia() + edge.getPeso() < edge.getDestino().getDistancia()) {
-
-                    edge.getDestino().setDistancia(v.getDistancia() + edge.getPeso());
-                    edge.getDestino().setAntecesor(v);
-                    tempVertexQueue.offer(edge.getDestino());
+        while (v!= null && !v.equals(destino)) {
+            
+            if(!v.isVisitado()){
+                for (Edge<E> edge : v.getEdges()) {
+                    if (v.getDistancia() + edge.getPeso() < edge.getDestino().getDistancia()) {
+                        edge.getDestino().setDistancia(v.getDistancia() + edge.getPeso());
+                        edge.getDestino().setAntecesor(v);
+                        tempVertexQueue.offer(edge.getDestino());
+                    }
                 }
+                v = tempVertexQueue.poll();
             }
-            v = tempVertexQueue.poll();
+            
         }
-
     }
 
     public List<E> bfs(E inicio, E destino) {
@@ -103,7 +99,6 @@ public class Graph<E> {
         }
 
         dijkstra(o, d);
-
         Vertex<E> temp = d;
 
         camino.add(temp.getData());
@@ -344,5 +339,4 @@ public class Graph<E> {
         }
         return temp.toString();
     }
-
 }

@@ -79,26 +79,27 @@ public class MainController {
 
     @FXML
     void start() {
-
-        BaconGraph bacon = new BaconGraph();
-        bacon.setFw(fw);
-        bacon.setGrafo(fw.getGrafo());
-        root.setContent(bacon.getRoot());
-        String act = actor.getText();
+        int codigoActor = fw.getActorId(actor.getText());
         
-        if (!act.isEmpty()) {
+        if (codigoActor != -1) {
+            BaconGraph bacon = new BaconGraph();
+            bacon.setFw(fw);
+            bacon.setGrafo(fw.getGrafo());
+            root.setContent(bacon.getRoot());
+            
             if (radioButton_dijkstra.isSelected()) {
-                bacon.dijkstra(fw.getActorId(act));
+                bacon.dijkstra(codigoActor);
                 numeroBaconEncontradoLabel.setText(String.valueOf(bacon.getNumeroBaconEncontrado()));
             } else {
-                bacon.bsf(fw.getActorId(act));
+                bacon.bsf(codigoActor);
                 numeroBaconEncontradoLabel.setText(String.valueOf(bacon.getNumeroBaconEncontrado()));
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error!!!");
-            alert.setContentText("Selecione un actor..!!");
+            alert.setContentText("Actor incorrecto..!!");
             alert.show();
+            actor.setText("");
         }
     }
 

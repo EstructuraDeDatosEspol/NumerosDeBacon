@@ -85,7 +85,7 @@ public class FileWorker {
         mapaActores = new HashMap<>();
         listaNombres = new LinkedList<>();
         
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\actores.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\actores-test.txt"))){
             String linea;
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("\\|");
@@ -100,7 +100,7 @@ public class FileWorker {
     
     public Map<Integer, String> leerArchivosPeliculasM(){
         mapaPeliculas = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\peliculas.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\peliculas-test.txt"))){
             String linea;
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("\\|");
@@ -118,7 +118,7 @@ public class FileWorker {
         leerArchivosActoresM();
         mapaPeliculaActor = new HashMap<>();
         
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\pelicula-actores.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\pelicula-actores-test.txt"))){
             String linea;
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("\\|");

@@ -28,7 +28,7 @@ public class BaconGraph {
     
     FileWorker fw;
     Graph<Integer> grafo;
-    private final int ID_BACON = 63;
+    private final int ID_BACON = 1;
     private final String NOMBRE_BACON;
     private final VBox root;
     
@@ -48,7 +48,7 @@ public class BaconGraph {
         List<Integer> camino = grafo.caminoMinimo(id, ID_BACON);
         
         if(!camino.get(camino.size()-1).equals(ID_BACON)){
-            System.out.println("nooooooooo");
+            //no tiene conexion con Bacon
             return;
         }
 
@@ -60,11 +60,9 @@ public class BaconGraph {
             if(col < camino.size() - 1) {
                 int idPelicula = grafo.getIdEdge(camino.get(col), camino.get(col+1));
                 pelicula = fw.getPelicula(idPelicula);
-            }
-            if(!actor.equalsIgnoreCase(NOMBRE_BACON))
                 root.getChildren().addAll(drawRectangle(actor, Color.BLUE), drawArrow("Actuó en"), 
                         drawRectangle(pelicula, Color.RED), drawArrow("Con"));
-            else
+            }else
                 root.getChildren().add(drawRectangle(actor, Color.BLUE));
         }
     }
@@ -82,11 +80,9 @@ public class BaconGraph {
             if(col < camino.size() - 1) {
                 int idPelicula = grafo.getIdEdge(camino.get(col), camino.get(col+1));
                 pelicula = fw.getPelicula(idPelicula);
-            }
-            if(!actor.equalsIgnoreCase(NOMBRE_BACON))
                 root.getChildren().addAll(drawRectangle(actor, Color.BLUE), drawArrow("Actuó en"), 
                         drawRectangle(pelicula, Color.RED), drawArrow("Con"));
-            else
+            }else
                 root.getChildren().add(drawRectangle(actor, Color.BLUE));
             col++;
         }
