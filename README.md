@@ -1,2 +1,2 @@
-<t>Números de Bacon</t>
+# Números de Bacon
 Programa para hallar números de Bacon.
