@@ -42,9 +42,9 @@ public class MainController {
 
     ToggleGroup toggleSelectors;
     @FXML
-    RadioButton radioButton_dijkstra;
+    RadioButton radioButtonDijkstra;
     @FXML
-    RadioButton radioButton_bfs;
+    RadioButton radioButtonBfs;
 
     @FXML
     ScrollPane root;
@@ -64,17 +64,17 @@ public class MainController {
                 try {
                     populatePopup();
                 } catch (Exception ex) {
-                    System.out.println("Problema al crear sugerencias");
+                    //Problema al crear sugerencias
                 }
                 menuSugerencias.show(actor, Side.BOTTOM, 0, 0);
             }
         });
 
         toggleSelectors = new ToggleGroup();
-        radioButton_dijkstra.setToggleGroup(toggleSelectors);
-        radioButton_bfs.setToggleGroup(toggleSelectors);
+        radioButtonDijkstra.setToggleGroup(toggleSelectors);
+        radioButtonBfs.setToggleGroup(toggleSelectors);
         
-        radioButton_dijkstra.setSelected(true);
+        radioButtonDijkstra.setSelected(true);
     }
 
     @FXML
@@ -87,7 +87,7 @@ public class MainController {
             bacon.setGrafo(fw.getGrafo());
             root.setContent(bacon.getRoot());
             
-            if (radioButton_dijkstra.isSelected()) {
+            if (radioButtonDijkstra.isSelected()) {
                 bacon.dijkstra(codigoActor);
                 numeroBaconEncontradoLabel.setText(String.valueOf(bacon.getNumeroBaconEncontrado()));
             } else {
@@ -108,9 +108,7 @@ public class MainController {
         List<String> suggestions = getSuggestions(actor.getText(), 10);
         List<String> itemsString = new LinkedList<>();
 
-        suggestions.forEach((s) -> {
-            itemsString.add(s);
-        });
+        suggestions.forEach(s -> itemsString.add(s));
 
         List<CustomMenuItem> menuItems = new LinkedList<>();
 

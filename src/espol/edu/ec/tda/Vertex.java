@@ -40,7 +40,7 @@ public class Vertex<E> {
         return edges;
     }
 
-    public void setEdges(LinkedList<Edge<E>> arcos) {
+    public void setEdges(List<Edge<E>> arcos) {
         this.edges = arcos;
     }
 
@@ -84,10 +84,7 @@ public class Vertex<E> {
         }
         
         final Vertex<E> other = (Vertex<E>) obj;
-        if (this.data!= other.data) {
-            return false;
-        }
-        return true;
+        return this.data== other.data;
     }
 
     @Override

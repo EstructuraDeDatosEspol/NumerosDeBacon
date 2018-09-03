@@ -24,9 +24,6 @@ public class FileWorker {
     private  Map<Integer, List<Integer>> mapaPeliculaActor;
     private  List<String> listaNombres;
     private  Graph<Integer> grafo;
-
-    public FileWorker() {
-    }
     
     public List<Actor> leerArchivosActoresL(){
         listaActores = new LinkedList<>();
@@ -64,20 +61,24 @@ public class FileWorker {
             String linea = "";
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("[|]");
-                for(Pelicula p: listaPeliculas){
-                    if(p.getId().equals(Integer.valueOf(arreglo[0]))){
-                        for(Actor a: listaActores){
-                            if(a.getId().equals(Integer.valueOf(arreglo[1]))){
-                                a.getPeliculas().add(p);
-                                p.getActores().add(a);
-                            }                                
-                        }
-                    }                        
-                }
+                relacionar(Integer.valueOf(arreglo[0]), Integer.valueOf(arreglo[1]));
             }
         }catch(Exception e){
             e.getStackTrace();
         }        
+    }
+    
+    private void relacionar(Integer idPelicula, Integer idActor){
+        for(Pelicula p: listaPeliculas){
+            if(p.getId().equals(idPelicula)){
+                for(Actor a: listaActores){
+                    if(a.getId().equals(idActor)){
+                        a.getPeliculas().add(p);
+                        p.getActores().add(a);
+                    }                                
+                }
+            }                        
+        }
     }
     
     
@@ -85,7 +86,7 @@ public class FileWorker {
         mapaActores = new HashMap<>();
         listaNombres = new LinkedList<>();
         
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\actores-test.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\actores.txt"))){
             String linea;
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("\\|");
@@ -100,7 +101,7 @@ public class FileWorker {
     
     public Map<Integer, String> leerArchivosPeliculasM(){
         mapaPeliculas = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\peliculas-test.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\peliculas.txt"))){
             String linea;
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("\\|");
@@ -118,7 +119,7 @@ public class FileWorker {
         leerArchivosActoresM();
         mapaPeliculaActor = new HashMap<>();
         
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\pelicula-actores-test.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src\\espol\\edu\\ec\\recursos\\pelicula-actores.txt"))){
             String linea;
             while((linea = br.readLine()) != null){
                 String[] arreglo = linea.split("\\|");

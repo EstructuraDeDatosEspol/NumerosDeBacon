@@ -28,29 +28,20 @@ public class BaconGraph {
     
     FileWorker fw;
     Graph<Integer> grafo;
-    private final int ID_BACON = 1;
-    private final String NOMBRE_BACON;
+    private static final int IDBACON = 63;
     private final VBox root;
     
     int numeroBaconEncontrado;
     
     public BaconGraph() {
-        this.NOMBRE_BACON = "Kevin Bacon";
         root = new VBox();
         root.setAlignment(Pos.CENTER); 
 
     }
     
     public void dijkstra(Integer id) {
-        
         root.getChildren().clear();
-        
-        List<Integer> camino = grafo.caminoMinimo(id, ID_BACON);
-        
-        if(!camino.get(camino.size()-1).equals(ID_BACON)){
-            //no tiene conexion con Bacon
-            return;
-        }
+        List<Integer> camino = grafo.caminoMinimo(id, IDBACON);
 
         numeroBaconEncontrado = camino.size()-1;
         
@@ -69,7 +60,7 @@ public class BaconGraph {
     
     public void bsf(int id) {
         root.getChildren().clear();
-        List<Integer> camino = grafo.bfs(id, ID_BACON);
+        List<Integer> camino = grafo.bfs(id, IDBACON);
         
         numeroBaconEncontrado = camino.size()-1;
         int col = 0;

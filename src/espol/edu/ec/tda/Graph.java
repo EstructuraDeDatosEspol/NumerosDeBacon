@@ -27,9 +27,8 @@ public class Graph<E> {
 
         origen.setDistancia(0);
         Vertex<E> v = origen;
-
+        
         while (v!= null && !v.equals(destino)) {
-            
             if(!v.isVisitado()){
                 for (Edge<E> edge : v.getEdges()) {
                     if (v.getDistancia() + edge.getPeso() < edge.getDestino().getDistancia()) {
@@ -232,7 +231,7 @@ public class Graph<E> {
             if (edge.getDestino().equals(v)) {
                 removeEdge(edge.getDestino().getData(), v.getData());
             }
-        };
+        }
         vertices.remove(v);
         return true;
 

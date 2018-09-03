@@ -13,7 +13,8 @@ package espol.edu.ec.tda;
 public class Edge<E> {
     private int peso;
     private Integer idPelicula;
-    private Vertex<E> origen, destino;
+    private Vertex<E> origen;
+    private Vertex<E> destino;
 
     public Edge( Vertex<E> origen, Vertex<E> destino, int peso, Integer idPelicula) {
         this.peso = peso;
@@ -24,8 +25,7 @@ public class Edge<E> {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        return hash;
+        return 7;
     }
 
     @Override
@@ -39,12 +39,7 @@ public class Edge<E> {
         }
         final Edge<E> other = (Edge<E>) obj;
         
-        if (!this.origen.equals(other.origen)||
-                !this.destino.equals(other.destino)||
-                this.peso!=other.peso) {
-            return false;
-        }
-        return true;
+        return this.origen.equals(other.origen) && this.destino.equals(other.destino) && this.peso==other.peso;
     }
 
     public int getPeso() {
